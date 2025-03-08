@@ -1,0 +1,17 @@
+{
+  "name": "zhidao-frontend",
+  "version": "1.0.0",
+  "description": "ZhiDao (知道) Frontend - An intelligent research assistant",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "keywords": ["research", "assistant", "ai", "frontend"],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.2",
+    "axios": "^1.6.0",
+    "dotenv": "^16.3.1"
+  }
+}

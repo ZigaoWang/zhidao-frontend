@@ -2,6 +2,8 @@
  * ZhiDao (知道) Frontend Server
  * This is a simplified server that connects to the ZhiDao backend API
  * It doesn't contain any of the proprietary algorithms
+ * 
+ * The main feature is the Research Engine, with Subscriptions as a bonus feature
  */
 
 const express = require('express');
@@ -33,6 +35,10 @@ app.use((req, res, next) => {
 
 // Serve static files from 'public' directory
 app.use(express.static('public'));
+
+/**
+ * CORE FEATURE: Research Engine API Endpoints
+ */
 
 /**
  * Proxy endpoint for /question
@@ -75,6 +81,10 @@ app.get('/stream-question', (req, res) => {
     res.end();
   });
 });
+
+/**
+ * BONUS FEATURE: Subscription API Endpoints
+ */
 
 /**
  * Proxy endpoint for /stream-daily-digest
@@ -129,5 +139,7 @@ app.get('/health', (req, res) => {
 app.listen(port, () => {
   console.log(`ZhiDao Frontend Server is running on port ${port}`);
   console.log(`Frontend available at http://localhost:${port}`);
+  console.log(`Research Engine (Main Feature): http://localhost:${port}/research-engine.html`);
+  console.log(`Subscriptions (Bonus Feature): http://localhost:${port}/subscription.html`);
   console.log(`Backend API configured at ${BACKEND_API_URL}`);
 });

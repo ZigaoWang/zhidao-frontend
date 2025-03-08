@@ -20,18 +20,31 @@
   </table>
 </div>
 
+## 🏆 Key Features
+
+### 🔎 Research Engine (Core Feature)
+
+ZhiDao's primary feature is its powerful research engine that helps users find, analyze, and understand academic research through natural language interactions:
+
+- **Natural Language Queries**: Ask research questions in plain language
+- **Academic Paper Search**: Searches multiple academic databases simultaneously
+- **AI-Powered Analysis**: Analyzes and synthesizes information from multiple sources
+- **Citation Management**: Automatically tracks and displays sources for all information
+- **Bilingual Support**: Full support for both English and Chinese languages
+
+### 📰 Research Subscriptions (Bonus Feature)
+
+As a complementary feature, ZhiDao offers personalized research subscriptions:
+
+- **Topic Subscriptions**: Subscribe to research topics of interest
+- **Daily Digests**: Receive daily updates on new research in your field
+- **Personalized Recommendations**: Get paper recommendations based on your interests
+
 ## 🏆 MoonShot 48 Runner-Up
 
 This project was developed during MoonShot 48 hackathon and received **2nd place** in the competition! ZhiDao is an AI-powered research assistant that helps users find, analyze, and understand academic research through natural language interactions.
 
 > **Note**: This is the frontend repository for ZhiDao. The backend repository containing the proprietary algorithms is private and currently being maintained by [Zigao Wang](https://github.com/ZigaoWang).
-
-## 🌟 Features
-
-- **🔎 Research Q&A:** Ask research questions in natural language and get comprehensive answers with citations
-- **📰 Personalized Subscriptions:** Subscribe to daily research feeds customized to your interests and topics
-- **🌏 Bilingual Interface:** Full support for both English and Chinese languages
-- **📚 Citation Management:** Automatically tracks and displays sources for all information
 
 ## 🚀 API Endpoints
 

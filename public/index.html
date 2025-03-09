@@ -17,6 +17,12 @@
       min-height: 100vh;
       display: flex;
       flex-direction: column;
+      transition: all 0.3s ease;
+    }
+    
+    body.dark-mode {
+      background-color: #1a1a1a;
+      color: #e0e0e0;
     }
     
     .main-content {
@@ -35,19 +41,40 @@
       border-bottom: 1px solid #e9ecef;
       padding: 15px 0;
       margin-bottom: 20px;
+      transition: all 0.3s ease;
+    }
+    
+    body.dark-mode .header {
+      background-color: #2d2d2d;
+      border-bottom-color: #444;
     }
     
     .header h1 {
-      font-size: 1.6rem;
+      font-size: 1.8rem;
       font-weight: 600;
       margin: 0;
       color: #343a40;
+      background: linear-gradient(135deg, #2c3e50, #4a89dc);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    body.dark-mode .header h1 {
+      background: linear-gradient(135deg, #64b5f6, #2196f3);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
     }
     
     .header p {
       margin: 5px 0 0;
       font-size: 0.95rem;
       color: #6c757d;
+    }
+    
+    body.dark-mode .header p {
+      color: #adb5bd;
     }
     
     .features-container {
@@ -60,25 +87,34 @@
     
     .feature-card {
       background-color: #fff;
-      border-radius: 8px;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
       overflow: hidden;
       width: 100%;
       max-width: 450px;
-      transition: transform 0.2s, box-shadow 0.2s;
+      transition: all 0.3s ease;
       display: flex;
       flex-direction: column;
       height: 350px;
       position: relative;
     }
     
+    body.dark-mode .feature-card {
+      background-color: #2d2d2d;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+    }
+    
     .feature-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      transform: translateY(-8px);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.15);
     }
     
     .feature-card.primary {
       border: 2px solid #3498db;
+    }
+    
+    body.dark-mode .feature-card.primary {
+      border: 2px solid #2196f3;
     }
     
     .feature-img {
@@ -94,9 +130,19 @@
       color: #3498db;
     }
     
+    body.dark-mode .feature-card.primary .feature-img {
+      background-color: #0d47a1;
+      color: #90caf9;
+    }
+    
     .feature-card:not(.primary) .feature-img {
       background-color: #f8f9fa;
       color: #6c757d;
+    }
+    
+    body.dark-mode .feature-card:not(.primary) .feature-img {
+      background-color: #333;
+      color: #adb5bd;
     }
     
     .feature-content {
@@ -112,11 +158,19 @@
       color: #2c3e50;
     }
     
+    body.dark-mode .feature-title {
+      color: #e0e0e0;
+    }
+    
     .feature-description {
       color: #7f8c8d;
       margin-bottom: 20px;
       font-size: 0.95rem;
       flex-grow: 1;
+    }
+    
+    body.dark-mode .feature-description {
+      color: #bdbdbd;
     }
     
     .feature-badge {
@@ -139,29 +193,52 @@
       background: linear-gradient(135deg, #6c757d, #495057);
     }
     
+    body.dark-mode .feature-badge {
+      box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+    }
+    
     .feature-button {
-      background-color: #3498db;
+      background: linear-gradient(135deg, #4a89dc, #3a70b9);
       color: white;
       border: none;
-      padding: 10px 20px;
-      border-radius: 4px;
+      padding: 12px 20px;
+      border-radius: 8px;
       cursor: pointer;
       font-size: 1rem;
       width: 100%;
-      transition: background-color 0.2s;
+      transition: all 0.3s ease;
       margin-top: auto;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     }
     
     .feature-button:hover {
-      background-color: #2980b9;
+      background: linear-gradient(135deg, #3a70b9, #2a5096);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+    }
+    
+    body.dark-mode .feature-button {
+      background: linear-gradient(135deg, #2196f3, #1976d2);
+    }
+    
+    body.dark-mode .feature-button:hover {
+      background: linear-gradient(135deg, #1976d2, #0d47a1);
     }
     
     .feature-card:not(.primary) .feature-button {
-      background-color: #6c757d;
+      background: linear-gradient(135deg, #6c757d, #5a6268);
     }
     
     .feature-card:not(.primary) .feature-button:hover {
-      background-color: #5a6268;
+      background: linear-gradient(135deg, #5a6268, #495057);
+    }
+    
+    body.dark-mode .feature-card:not(.primary) .feature-button {
+      background: linear-gradient(135deg, #546e7a, #455a64);
+    }
+    
+    body.dark-mode .feature-card:not(.primary) .feature-button:hover {
+      background: linear-gradient(135deg, #455a64, #37474f);
     }
     
     .footer {
@@ -172,6 +249,13 @@
       text-align: center;
       font-size: 0.9rem;
       color: #6c757d;
+      transition: all 0.3s ease;
+    }
+    
+    body.dark-mode .footer {
+      background-color: #2d2d2d;
+      border-top-color: #444;
+      color: #999;
     }
     
     .footer a {
@@ -179,8 +263,36 @@
       text-decoration: none;
     }
     
+    body.dark-mode .footer a {
+      color: #64b5f6;
+    }
+    
     .footer a:hover {
       text-decoration: underline;
+    }
+    
+    .dark-mode-toggle {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #2c3e50, #4a89dc);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+      z-index: 1000;
+      transition: all 0.3s ease;
+      font-size: 24px;
+    }
+    
+    .dark-mode-toggle:hover {
+      transform: scale(1.1);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
     }
     
     @media (max-width: 768px) {
@@ -239,6 +351,9 @@
     </div>
   </div>
   
+  <!-- Dark mode toggle button -->
+  <div class="dark-mode-toggle" id="dark-mode-toggle">🌓</div>
+  
   <!-- Footer -->
   <footer class="footer">
     <div class="container">
@@ -249,5 +364,26 @@
       </p>
     </div>
   </footer>
+  
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const darkModeToggle = document.getElementById('dark-mode-toggle');
+      let isDarkMode = localStorage.getItem('darkMode') === 'true';
+      
+      // Initialize dark mode if previously enabled
+      if (isDarkMode) {
+        document.body.classList.add('dark-mode');
+        darkModeToggle.textContent = '🌞';
+      }
+      
+      // Dark mode toggle functionality
+      darkModeToggle.addEventListener('click', function() {
+        isDarkMode = !isDarkMode;
+        document.body.classList.toggle('dark-mode', isDarkMode);
+        localStorage.setItem('darkMode', isDarkMode);
+        darkModeToggle.textContent = isDarkMode ? '🌞' : '🌓';
+      });
+    });
+  </script>
 </body>
 </html>

@@ -15,9 +15,10 @@ body {
   flex: 1;
   padding-bottom: 12px; /* Match footer padding */
   background-color: #fff;
-  border-radius: 8px;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
   padding: 20px;
+  transition: all 0.3s ease;
 }
 
 .container {
@@ -29,42 +30,48 @@ body {
 .input-group {
   display: flex;
   gap: 10px;
+  margin-bottom: 10px;
 }
 
 input {
   flex: 1;
-  padding: 12px 15px;
+  padding: 14px 18px;
   font-size: 16px;
   border: 1px solid #e0e0e0;
-  border-radius: 6px;
+  border-radius: 10px;
   box-shadow: inset 0 1px 3px rgba(0,0,0,0.05);
-  transition: border-color 0.3s, box-shadow 0.3s;
+  transition: all 0.3s ease;
 }
 
 input:focus {
   border-color: #4a89dc;
   box-shadow: 0 0 0 3px rgba(74,137,220,0.1);
   outline: none;
+  transform: translateY(-1px);
 }
 
 button {
-  padding: 12px 25px;
-  background: #4a89dc;
+  padding: 14px 25px;
+  background: linear-gradient(135deg, #4a89dc, #3a70b9);
   color: white;
   border: none;
-  border-radius: 6px;
+  border-radius: 10px;
   cursor: pointer;
   font-size: 16px;
   font-weight: 500;
-  transition: background 0.3s, transform 0.1s;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
 button:hover {
-  background: #3a70b9;
+  background: linear-gradient(135deg, #3a70b9, #2a5096);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
 }
 
 button:active {
   transform: translateY(1px);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
 }
 
 button:disabled {
@@ -100,15 +107,19 @@ h1 {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px 0;
+  padding: 15px 0;
   border-bottom: 1px solid #eee;
-  margin-bottom: 20px;
+  margin-bottom: 25px;
 }
 
 .nav-title {
-  font-size: 24px;
+  font-size: 26px;
   font-weight: bold;
   color: #2c3e50;
+  background: linear-gradient(135deg, #2c3e50, #4a89dc);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .nav-links {
@@ -184,19 +195,20 @@ h1 {
 .progress {
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  margin-bottom: 20px;
+  gap: 12px;
+  margin-bottom: 25px;
 }
 
 .progress-stage {
-  padding: 12px 15px;
+  padding: 14px 18px;
   background: #f5f7fa;
   border-left: 3px solid #a0b0c5;
   display: flex;
   gap: 12px;
   align-items: center;
-  border-radius: 0 4px 4px 0;
+  border-radius: 0 8px 8px 0;
   transition: all 0.3s ease;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
 }
 
 .progress-stage.active {
@@ -230,24 +242,50 @@ h1 {
   color: #27ae60;
   font-weight: bold;
   text-align: center;
+  animation: checkmark-appear 0.5s ease-out;
+}
+
+@keyframes checkmark-appear {
+  from { opacity: 0; transform: scale(0.5); }
+  to { opacity: 1; transform: scale(1); }
 }
 
 .citation {
-  background-color: #e8f4fc;
+  display: inline-block;
+  background-color: #e3f2fd;
+  padding: 2px 6px;
   border-radius: 4px;
-  padding: 2px 5px;
+  margin: 0 2px;
   cursor: pointer;
   transition: background-color 0.2s;
   font-weight: 500;
+  border: 1px solid #bbdefb;
+  color: #1976d2;
+  text-decoration: none;
 }
 
 .citation:hover {
-  background-color: #c9e3f8;
+  background-color: #bbdefb;
 }
 
 .citation.active {
   background-color: #ffeeba;
   border: 1px solid #ffc107;
+}
+
+body.dark-mode .citation {
+  background-color: #1976d2;
+  border-color: #2196f3;
+  color: white;
+}
+
+body.dark-mode .citation:hover {
+  background-color: #0d47a1;
+}
+
+body.dark-mode .citation.active {
+  background-color: #f57c00;
+  border-color: #ff9800;
 }
 
 .decision-banner {
@@ -282,15 +320,24 @@ h1 {
 
 .paper-item {
   border: 1px solid #e0e0e0;
-  border-radius: 6px;
+  border-radius: 10px;
   margin-bottom: 15px;
   overflow: hidden;
-  transition: transform 0.2s, box-shadow 0.2s;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+  transform: translateZ(0); /* Hardware acceleration */
+  will-change: transform, box-shadow; /* Optimize animations */
+  animation: fade-in 0.5s ease-out;
+}
+
+@keyframes fade-in {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 .paper-item:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
 }
 
 .paper-item.cited {
@@ -444,16 +491,31 @@ h1 {
 
 /* Updated styles for real-time rendering and citations */
 .live-markdown-container {
+  max-height: 70vh;
+  overflow-y: auto !important; /* Force scrolling to always be enabled */
+  -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
   padding: 20px;
-  border-radius: 8px;
   background-color: white;
-  min-height: 250px;
-  max-height: 600px;
-  overflow-y: auto;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
   margin-bottom: 20px;
-  font-size: 16px;
   line-height: 1.6;
+  transition: background-color 0.3s ease;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  hyphens: auto;
+  position: relative;
+}
+
+body.dark-mode .live-markdown-container {
+  background-color: #2a2a2a;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+}
+
+/* Ensure scrolling works during generation */
+.live-markdown-container.generating {
+  overflow-y: auto !important;
+  -webkit-overflow-scrolling: touch;
 }
 
 .live-markdown-container h1,
@@ -489,20 +551,21 @@ h1 {
   font-size: 0.8em;
   background-color: #2196F3;
   color: white;
-  border-radius: 4px;
-  padding: 2px 6px;
+  border-radius: 6px;
+  padding: 3px 8px;
   margin: 0 2px;
   cursor: pointer;
   font-weight: bold;
   text-decoration: none;
-  transition: all 0.2s ease;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
   vertical-align: baseline;
 }
 
 .citation:hover {
   transform: scale(1.2);
   background-color: #0d47a1;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.15);
 }
 
 .citation.active {
@@ -568,14 +631,15 @@ h1 {
 .citation-tooltip {
   position: fixed;
   background: white;
-  border-radius: 6px;
-  box-shadow: 0 3px 10px rgba(0,0,0,0.2);
-  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+  padding: 15px;
   z-index: 1000;
   max-width: 300px;
   display: none;
   font-size: 14px;
   border-left: 4px solid #2196F3;
+  transition: all 0.3s ease;
 }
 
 /* 添加聊天气泡样式 */
@@ -627,4 +691,705 @@ h1 {
   padding-left: 20px;
   text-indent: -20px;
   line-height: 1.4;
+}
+
+/* Dark mode toggle */
+.dark-mode-toggle {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #2c3e50, #4a89dc);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+  z-index: 1000;
+  transition: all 0.3s ease;
+  font-size: 24px;
+}
+
+.dark-mode-toggle:hover {
+  transform: scale(1.1);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+.dark-mode-toggle:active {
+  transform: scale(0.9);
+}
+
+/* Dark mode styles */
+body.dark-mode {
+  background-color: #1a1a1a;
+  color: #e0e0e0;
+}
+
+body.dark-mode .main-content {
+  background-color: #2d2d2d;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+}
+
+body.dark-mode .nav-bar {
+  border-bottom-color: #444;
+}
+
+body.dark-mode .nav-title {
+  background: linear-gradient(135deg, #64b5f6, #2196f3);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+body.dark-mode .nav-link {
+  color: #64b5f6;
+}
+
+body.dark-mode .nav-link:hover {
+  background-color: #3d3d3d;
+}
+
+body.dark-mode input {
+  background-color: #3d3d3d;
+  border-color: #555;
+  color: #e0e0e0;
+}
+
+body.dark-mode input:focus {
+  border-color: #64b5f6;
+  box-shadow: 0 0 0 3px rgba(33, 150, 243, 0.2);
+}
+
+body.dark-mode input::placeholder {
+  color: #999;
+}
+
+body.dark-mode button {
+  background: linear-gradient(135deg, #2196f3, #1976d2);
+}
+
+body.dark-mode button:hover {
+  background: linear-gradient(135deg, #1976d2, #0d47a1);
+}
+
+body.dark-mode .footer {
+  background-color: #2d2d2d;
+  border-top-color: #444;
+  color: #999;
+}
+
+body.dark-mode .footer a {
+  color: #64b5f6;
+}
+
+body.dark-mode .progress-stage {
+  background-color: #3d3d3d;
+  border-left-color: #666;
+}
+
+body.dark-mode .progress-stage.active {
+  background-color: #0d47a1;
+  border-left-color: #2196f3;
+  color: #fff;
+}
+
+body.dark-mode .progress-stage.completed {
+  background-color: #1b5e20;
+  border-left-color: #4caf50;
+  color: #fff;
+}
+
+body.dark-mode .paper-item {
+  background-color: #3d3d3d;
+  border-color: #555;
+}
+
+body.dark-mode .paper-header {
+  background-color: #333;
+  border-bottom-color: #555;
+}
+
+body.dark-mode .paper-tag.cited {
+  background-color: #1b5e20;
+  color: #a5d6a7;
+}
+
+body.dark-mode .paper-tag.unused {
+  background-color: #424242;
+  color: #bdbdbd;
+}
+
+body.dark-mode .abstract {
+  color: #bdbdbd;
+  border-top-color: #555;
+}
+
+body.dark-mode .live-markdown-container {
+  background-color: #2d2d2d;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+
+body.dark-mode .citation {
+  background-color: #1976d2;
+}
+
+body.dark-mode .citation:hover {
+  background-color: #0d47a1;
+}
+
+body.dark-mode .citation.active {
+  background-color: #f57c00;
+}
+
+body.dark-mode .citation-tooltip {
+  background-color: #3d3d3d;
+  border-left-color: #2196f3;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+body.dark-mode .status {
+  background-color: #3d3d3d;
+}
+
+body.dark-mode .status.error {
+  border-left-color: #e53935;
+}
+
+body.dark-mode .status.success {
+  border-left-color: #43a047;
+}
+
+body.dark-mode .direct-answer {
+  background-color: #1b5e20;
+  border-left-color: #43a047;
+  color: #a5d6a7;
+}
+
+body.dark-mode .research-needed {
+  background-color: #0d47a1;
+  border-left-color: #2196f3;
+  color: #90caf9;
+}
+
+body.dark-mode .search-keyword {
+  background-color: #0d47a1;
+  border-color: #2196f3;
+  color: #90caf9;
+}
+
+/* Flash animation for dark mode */
+@keyframes flash-highlight-dark {
+  0% { background-color: transparent; }
+  20% { background-color: #2c3e50; }
+  100% { background-color: transparent; }
+}
+
+body.dark-mode .flash {
+  animation: flash-highlight-dark 1.5s ease;
+}
+
+/* Loading animation */
+.loading-dots {
+  display: none;
+}
+
+.loading-dots span {
+  width: 6px;
+  height: 6px;
+  margin: 0 2px;
+  background-color: currentColor;
+  border-radius: 50%;
+  display: inline-block;
+  animation: loading-dots 1.4s infinite ease-in-out both;
+}
+
+.loading-dots span:nth-child(1) {
+  animation-delay: -0.32s;
+}
+
+.loading-dots span:nth-child(2) {
+  animation-delay: -0.16s;
+}
+
+@keyframes loading-dots {
+  0%, 80%, 100% { transform: scale(0); }
+  40% { transform: scale(1); }
+}
+
+/* Improved animations for better user feedback */
+
+/* Pulse animation for the submit button */
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+.button:focus {
+  animation: pulse 1s infinite;
+  outline: none;
+}
+
+/* Improved loading animation */
+@keyframes shimmer {
+  0% { background-position: -468px 0; }
+  100% { background-position: 468px 0; }
+}
+
+.shimmer {
+  background: linear-gradient(to right, rgba(255, 255, 255, 0.1) 8%, rgba(255, 255, 255, 0.2) 18%, rgba(255, 255, 255, 0.1) 33%);
+  background-size: 800px 104px;
+  animation: shimmer 1.5s infinite linear;
+}
+
+body.dark-mode .shimmer {
+  background: linear-gradient(to right, rgba(30, 30, 30, 0.1) 8%, rgba(60, 60, 60, 0.2) 18%, rgba(30, 30, 30, 0.1) 33%);
+  background-size: 800px 104px;
+}
+
+/* Paper item hover effect */
+.paper-item {
+  transition: all 0.3s ease;
+}
+
+.paper-item:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+body.dark-mode .paper-item:hover {
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+/* Improved focus states for accessibility */
+input:focus, button:focus, a:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(74, 137, 220, 0.3);
+  transition: box-shadow 0.2s ease;
+}
+
+body.dark-mode input:focus, 
+body.dark-mode button:focus, 
+body.dark-mode a:focus {
+  box-shadow: 0 0 0 3px rgba(33, 150, 243, 0.3);
+}
+
+/* Subtle hover effect for citations */
+.citation {
+  transition: all 0.2s ease;
+}
+
+.citation:hover {
+  transform: translateY(-1px);
+}
+
+/* Improved scrollbar for better UX */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #a1a1a1;
+}
+
+body.dark-mode ::-webkit-scrollbar-track {
+  background: #2d2d2d;
+}
+
+body.dark-mode ::-webkit-scrollbar-thumb {
+  background: #555;
+}
+
+body.dark-mode ::-webkit-scrollbar-thumb:hover {
+  background: #777;
+}
+
+/* Tooltip styles */
+.tooltip-container {
+  position: fixed;
+  top: 80px;
+  right: 20px;
+  z-index: 1000;
+  display: none;
+  animation: slide-in 0.3s ease-out;
+}
+
+@keyframes slide-in {
+  from { transform: translateX(100%); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+.tooltip-content {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 5px 25px rgba(0,0,0,0.15);
+  width: 320px;
+  overflow: hidden;
+  border-left: 4px solid #4a89dc;
+}
+
+body.dark-mode .tooltip-content {
+  background-color: #2d2d2d;
+  box-shadow: 0 5px 25px rgba(0,0,0,0.3);
+  border-left-color: #2196f3;
+}
+
+.tooltip-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 15px;
+  background-color: #f8f9fa;
+  border-bottom: 1px solid #e9ecef;
+}
+
+body.dark-mode .tooltip-header {
+  background-color: #333;
+  border-bottom-color: #444;
+}
+
+.tooltip-header h4 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+  color: #2c3e50;
+}
+
+body.dark-mode .tooltip-header h4 {
+  color: #e0e0e0;
+}
+
+.tooltip-close {
+  font-size: 22px;
+  color: #6c757d;
+  cursor: pointer;
+  line-height: 1;
+  transition: color 0.2s;
+}
+
+.tooltip-close:hover {
+  color: #343a40;
+}
+
+body.dark-mode .tooltip-close {
+  color: #adb5bd;
+}
+
+body.dark-mode .tooltip-close:hover {
+  color: #e0e0e0;
+}
+
+.tooltip-body {
+  padding: 15px;
+}
+
+.tooltip-body p {
+  margin-top: 0;
+  margin-bottom: 10px;
+  color: #495057;
+}
+
+body.dark-mode .tooltip-body p {
+  color: #bdbdbd;
+}
+
+.tooltip-body ul {
+  margin: 0;
+  padding-left: 20px;
+}
+
+.tooltip-body li {
+  margin-bottom: 8px;
+  color: #495057;
+  font-size: 14px;
+}
+
+body.dark-mode .tooltip-body li {
+  color: #bdbdbd;
+}
+
+.tooltip-checkbox-container {
+  display: flex;
+  align-items: center;
+  margin-top: 15px;
+}
+
+.tooltip-checkbox-container input {
+  margin-right: 8px;
+}
+
+.tooltip-checkbox-container label {
+  font-size: 14px;
+  color: #6c757d;
+  cursor: pointer;
+}
+
+body.dark-mode .tooltip-checkbox-container label {
+  color: #adb5bd;
+}
+
+/* Scroll to top button visibility */
+.scroll-top-button {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #4a89dc, #3a70b9);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+  z-index: 1000;
+  transition: all 0.3s ease;
+  font-size: 24px;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.scroll-top-button.visible {
+  opacity: 0.8;
+  visibility: visible;
+}
+
+.scroll-top-button:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  opacity: 1;
+}
+
+body.dark-mode .scroll-top-button {
+  background: linear-gradient(135deg, #2196f3, #1976d2);
+}
+
+/* Add smooth scrolling to the entire page */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Add shimmer effect to active progress stages */
+.progress-stage.active {
+  position: relative;
+  overflow: hidden;
+}
+
+.progress-stage.active::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to right, transparent 0%, rgba(255, 255, 255, 0.2) 50%, transparent 100%);
+  animation: shimmer-progress 2s infinite;
+}
+
+body.dark-mode .progress-stage.active::after {
+  background: linear-gradient(to right, transparent 0%, rgba(255, 255, 255, 0.1) 50%, transparent 100%);
+}
+
+@keyframes shimmer-progress {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+/* Add a subtle transition when papers are highlighted */
+.paper-item {
+  transition: all 0.3s ease;
+}
+
+.paper-item.flash {
+  animation: flash-paper 1.5s ease;
+}
+
+@keyframes flash-paper {
+  0% { background-color: transparent; }
+  20% { background-color: rgba(74, 137, 220, 0.2); }
+  100% { background-color: transparent; }
+}
+
+body.dark-mode .paper-item.flash {
+  animation: flash-paper-dark 1.5s ease;
+}
+
+@keyframes flash-paper-dark {
+  0% { background-color: transparent; }
+  20% { background-color: rgba(33, 150, 243, 0.2); }
+  100% { background-color: transparent; }
+}
+
+/* Improved mobile responsiveness */
+@media (max-width: 768px) {
+  .main-content {
+    padding: 10px;
+  }
+  
+  .question-container {
+    flex-direction: column;
+  }
+  
+  .question-input {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  
+  .button {
+    width: 100%;
+  }
+  
+  .papers-container {
+    margin-right: 0;
+    width: 100%;
+    max-height: none;
+    margin-bottom: 20px;
+  }
+  
+  .live-markdown-container {
+    width: 100%;
+  }
+  
+  .dark-mode-toggle {
+    width: 40px;
+    height: 40px;
+    font-size: 20px;
+    bottom: 15px;
+    right: 15px;
+  }
+  
+  .scroll-top-button {
+    width: 40px;
+    height: 40px;
+    font-size: 20px;
+    bottom: 15px;
+    left: 15px;
+  }
+  
+  .tooltip-container {
+    top: 60px;
+    right: 10px;
+    left: 10px;
+    width: auto;
+  }
+  
+  .tooltip-content {
+    width: 100%;
+  }
+  
+  .citation-tooltip {
+    max-width: 280px;
+  }
+}
+
+/* Enhanced animations and transitions */
+
+/* Smooth transition for all interactive elements */
+button, a, input, .paper-item, .citation, .dark-mode-toggle, .scroll-top-button {
+  transition: all 0.3s ease;
+}
+
+/* Improved button hover effect */
+.button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+/* Improved paper item transition */
+.paper-item {
+  transform: translateZ(0); /* Hardware acceleration */
+  will-change: transform, box-shadow; /* Optimize animations */
+}
+
+/* Add a subtle animation when new papers are added */
+@keyframes fade-in {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.paper-item {
+  animation: fade-in 0.5s ease-out;
+}
+
+/* Improve the citation tooltip appearance */
+.citation-tooltip {
+  animation: tooltip-fade-in 0.3s ease-out;
+  transform-origin: top center;
+}
+
+@keyframes tooltip-fade-in {
+  from { opacity: 0; transform: translateY(10px) scale(0.95); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* Add a subtle pulse animation to the citation when clicked */
+.citation.active {
+  animation: citation-pulse 1.5s infinite;
+}
+
+@keyframes citation-pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
+/* Improve focus indication for accessibility */
+input:focus, button:focus, a:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(74, 137, 220, 0.3);
+  transition: box-shadow 0.2s ease;
+}
+
+body.dark-mode input:focus,
+body.dark-mode button:focus,
+body.dark-mode a:focus {
+  box-shadow: 0 0 0 3px rgba(33, 150, 243, 0.3);
+}
+
+/* Add a subtle animation to the checkmark in completed stages */
+.checkmark {
+  animation: checkmark-appear 0.5s ease-out;
+}
+
+@keyframes checkmark-appear {
+  from { opacity: 0; transform: scale(0.5); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+/* Improve the loading dots animation */
+.loading-dots span {
+  animation: loading-dots 1.4s infinite ease-in-out both;
+}
+
+.loading-dots span:nth-child(1) {
+  animation-delay: -0.32s;
+}
+
+.loading-dots span:nth-child(2) {
+  animation-delay: -0.16s;
+}
+
+@keyframes loading-dots {
+  0%, 80%, 100% { transform: scale(0); }
+  40% { transform: scale(1); }
+}
+
+/* Add a subtle animation to the dark mode toggle */
+.dark-mode-toggle:active {
+  transform: scale(0.9);
 }
